@@ -1,4 +1,4 @@
-Mail-in-a-Box
+Mail-in-a-Little-Box
 =============
 
 By [@JoshData](https://github.com/JoshData) and [contributors](https://github.com/mail-in-a-box/mailinabox/graphs/contributors).
@@ -94,7 +94,7 @@ This is a challenge faced by everyone who runs their own mail server, with or wi
 Contributing and Development
 ----------------------------
 
-Mail-in-a-Box is an open source project. Your contributions and pull requests are welcome. See [CONTRIBUTING](CONTRIBUTING.md) to get started. 
+Mail-in-a-Box is an open source project. Your contributions and pull requests are welcome. See [CONTRIBUTING](CONTRIBUTING.md) to get started.
 
 
 The Acknowledgements
