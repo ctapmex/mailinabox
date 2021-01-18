@@ -100,7 +100,7 @@ tools/editconf.py /etc/postfix/master.cf -s -w \
 # Install the `outgoing_mail_header_filters` file required by the new 'authclean' service.
 cp conf/postfix_outgoing_mail_header_filters /etc/postfix/outgoing_mail_header_filters
 
-# Modify the `outgoing_mail_header_filters` file to use the local machine name and ip 
+# Modify the `outgoing_mail_header_filters` file to use the local machine name and ip
 # on the first received header line.  This may help reduce the spam score of email by
 # removing the 127.0.0.1 reference.
 sed -i "s/PRIMARY_HOSTNAME/$PRIMARY_HOSTNAME/" /etc/postfix/outgoing_mail_header_filters
@@ -256,7 +256,7 @@ chmod +x /etc/cron.daily/mailinabox-postgrey-whitelist
 /etc/cron.daily/mailinabox-postgrey-whitelist
 
 # Increase the message size limit from 10MB to 128MB.
-# The same limit is specified in nginx.conf for mail submitted via webmail and Z-Push.
+# The same limit is specified in nginx.conf for mail submitted via webmail.
 tools/editconf.py /etc/postfix/main.cf \
 	message_size_limit=134217728
 
