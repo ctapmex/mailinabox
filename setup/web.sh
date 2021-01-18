@@ -99,6 +99,9 @@ fi
 # since it depends on what domains we're serving, which we don't know
 # until mail accounts have been created.
 
+mkdir -p /var/lib/mailinabox
+chmod a+rx /var/lib/mailinabox
+
 # Create a generic mta-sts.txt file which is exposed via the
 # nginx configuration at /.well-known/mta-sts.txt
 # more documentation is available on:
