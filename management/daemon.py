@@ -541,6 +541,10 @@ def do_updates():
 		"DEBIAN_FRONTEND": "noninteractive"
 	})
 
+@app.route('/system/uptime')
+@authorized_personnel_only
+def show_uptime():
+	return utils.shell("check_output", ["/usr/bin/uptime", "--pretty"])
 
 @app.route('/system/reboot', methods=["GET"])
 @authorized_personnel_only
