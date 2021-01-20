@@ -110,6 +110,9 @@ def validate_auth_mfa(email, request, env):
 	if len(mfa_state) == 0:
 		return (True, [])
 
+	if request.full_path.startswith("/munin"):
+		return (True, [])
+
 	# Try the enabled MFA modes.
 	hints = set()
 	for mfa_mode in mfa_state:
