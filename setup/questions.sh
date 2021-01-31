@@ -119,7 +119,7 @@ if [ -z "${PUBLIC_IP:-}" ]; then
 	fi
 fi
 
-DEFAULT_ADMIN_HOME_IP=""
+DEFAULT_ADMIN_HOME_IP="127.0.0.1"
 
 if [ -z "${ADMIN_HOME_IP:-}" ]; then
 	input_box "Admin Home IP Address" \
