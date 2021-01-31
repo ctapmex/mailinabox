@@ -322,7 +322,7 @@ fi #NODOC
 #	we ran into the limit thus we are increasing it from 75 (default value) to 100.
 apt_install bind9
 tools/editconf.py /etc/bind/named.conf.options \
-	"OPTIONS=\"-u bind -4\""		-s -c '//' \
+	-s -c '//' \
 	'	listen-on-v6={ none; };'
 # Unable to use editconfig.py here as `listen-on` should go inside the options `{}` block
 if ! grep -q "listen-on " /etc/bind/named.conf.options; then
