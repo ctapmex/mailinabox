@@ -90,9 +90,6 @@ fi
 # come from there and minimal Ubuntu installs may have it turned off.
 hide_output add-apt-repository -y universe
 
-# Install the certbot PPA.
-hide_output add-apt-repository -y ppa:certbot/certbot
-
 # Install the duplicity PPA.
 hide_output add-apt-repository -y ppa:duplicity-team/duplicity-release-git
 
@@ -324,8 +321,10 @@ fi #NODOC
 #  	If more queries than specified are sent, bind9 returns SERVFAIL. After flushing the cache during system checks,
 #	we ran into the limit thus we are increasing it from 75 (default value) to 100.
 apt_install bind9
-tools/editconf.py /etc/default/bind9 \
-	"OPTIONS=\"-u bind -4\""
+tools/editconf.py /etc/bind/named.conf.options \
+	"OPTIONS=\"-u bind -4\""		-s -c '//' \
+	'	listen-on-v6={ none; };'
+# Unable to use editconfig.py here as `listen-on` should go inside the options `{}` block
 if ! grep -q "listen-on " /etc/bind/named.conf.options; then
 	# Add a listen-on directive if it doesn't exist inside the options block.
 	sed -i "s/^}/\n\tlisten-on { 127.0.0.1; };\n}/" /etc/bind/named.conf.options
