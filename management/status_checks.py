@@ -710,7 +710,7 @@ def check_web_domain(domain, rounded_time, ssl_certificates, env, output):
 	check_ssl_cert(domain, rounded_time, ssl_certificates, env, output)
 
 def query_dns(qname, rtype, nxdomain='[Not Set]', at=None):
-	# Make the qname absolute by appending a period. Without this, dns.resolver.query
+	# Make the qname absolute by appending a period. Without this, dns.resolver.resolve
 	# will fall back a failed lookup to a second query with this machine's hostname
 	# appended. This has been causing some false-positive Spamhaus reports. The
 	# reverse DNS lookup will pass a dns.name.Name instance which is already
@@ -731,7 +731,7 @@ def query_dns(qname, rtype, nxdomain='[Not Set]', at=None):
 
 	# Do the query.
 	try:
-		response = resolver.query(qname, rtype)
+		response = resolver.resolve(qname, rtype, search=True)
 	except (dns.resolver.NoNameservers, dns.resolver.NXDOMAIN, dns.resolver.NoAnswer):
 		# Host did not have an answer for this query; not sure what the
 		# difference is between the two exceptions.
